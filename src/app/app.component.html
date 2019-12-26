@@ -1,0 +1,65 @@
+<div class="container">
+<router-outlet></router-outlet>
+
+
+<app-product-list
+  [productList]="products"
+  (onProductSelected)="productWasSelected($event)"
+>
+
+</app-product-list
+>
+<br>
+<hr>
+<hr>
+
+<div style="text-align: center; border: red 1px solid;" width=1000px;>
+<!-- tablular view  -->
+<table class="table" border="2" style="border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th>S.no.</th>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Department</th>
+      <th>price</th>
+      <th>sku</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let books of products; let i=index;" (click)="productWasSelected(books)">
+      <td scope="row">{{i+1}} </td>
+      <td> <img [src]="books.imageUrl" width="100px" alt=""></td>
+      <td>{{books.name}}</td>
+      <td>{{books.department}}</td>
+      <td>{{books.price}}</td>
+      <td>{{books.sku}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!--three products using ngfor -- normal view -->
+<hr>
+<span *ngFor="let books of products; let i=index;" (click)="productWasSelected(books)">
+  <span> {{books.sku}} </span>
+<span> {{books.name}} </span>
+<img [src]="books.imageUrl" alt="" width="100px">
+<span> {{books.department}} </span>
+<span> {{books.price}} </span>
+</span>
+<hr>
+<br>
+<!--first single product-- normal view -->
+<span >
+  <span> {{product.sku}} </span>
+  <span> {{product.name}} </span>
+  <img [src]="product.imageUrl" alt="" width="100px;">
+  <span> {{product.department}} </span>
+  <span> {{product.price}} </span>
+</span>
+
+
+<!-- <img src="../assets/images/hitler.jpg" alt=""> -->
+</div>
+</div>
